@@ -22,31 +22,36 @@ public class Slingshot : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();    
+        rb = GetComponent<Rigidbody>();
+        Debug.Log("1");
     }
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
+        Debug.Log("2");
     }
-    private void Awake()
+    void Awake()
     {
         S = this;
         Transform launchPointTrans = transform.Find("LaunchPoint");
         launchPoint = launchPointTrans.gameObject;
         launchPoint.SetActive(false);
         launchPos = launchPointTrans.position;
+        Debug.Log("3");
     }
 
     void OnMouseEnter()
     {
         launchPoint.SetActive(true);
+        Debug.Log("4");
     }
 
     void OnMouseExit()
     {
         launchPoint.SetActive(false);
+        Debug.Log("5");
     }
 
     void OnMouseDown()
@@ -55,24 +60,30 @@ public class Slingshot : MonoBehaviour
         projectile = Instantiate(prefabsProjectile) as GameObject;
         projectile.transform.position = launchPos;
         projectile.GetComponent<Rigidbody>().isKinematic = true;
+        Debug.Log("6");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("7");
         if (!aimingMode) return;
+        Debug.Log("14");
         Vector3 mousePos2D = Input.mousePosition;
         mousePos2D.z = -Camera.main.transform.position.z;
         Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePos2D);
         Vector3 mouseDelta = mousePos3D - launchPos;
         float maxMagnitude = this.GetComponent<SphereCollider>().radius;
+        Debug.Log("8");
         if (mouseDelta.magnitude > maxMagnitude)
         {
             mouseDelta.Normalize();
             mouseDelta *= maxMagnitude;
+            Debug.Log("9");
         }
         Vector3 projPos = launchPos + mouseDelta;
         projectile.transform.position = projPos;
+        Debug.Log("10");
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -80,13 +91,16 @@ public class Slingshot : MonoBehaviour
             projectile.GetComponent<Rigidbody>().isKinematic = false;
             projectile.GetComponent<Rigidbody>().velocity = -mouseDelta * velocityMult;
             projectile = null;
+            Debug.Log("11");
         }
+        Debug.Log("12");
     }
 
     void FixedUpdate()
     {
         Vector2 movment = new Vector2(movementX, movementY);
         rb.AddForce(movment * speed);
+        //Debug.Log("13");
     }
 }
 
