@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 81840214}
   - component: {fileID: 81840217}
   - component: {fileID: 81840216}
+  - component: {fileID: 81840215}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -234,6 +235,19 @@ Transform:
   m_Father: {fileID: 1077953942}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &81840215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81840213}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0.25, z: -0.00000008940697}
 --- !u!23 &81840216
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -749,6 +763,7 @@ GameObject:
   - component: {fileID: 1077953945}
   - component: {fileID: 1077953944}
   - component: {fileID: 1077953946}
+  - component: {fileID: 1077953947}
   m_Layer: 0
   m_Name: Slingshot
   m_TagString: Untagged
@@ -804,7 +819,7 @@ MonoBehaviour:
   launchPoint: {fileID: 2071878138}
   launchPos: {x: 0, y: 0, z: 0}
   projectile: {fileID: 1031083924355289163, guid: ddfba490acc06b24abba616f6eaa432b, type: 3}
-  aimingMode: 1
+  aimingMode: 0
 --- !u!114 &1077953945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,6 +866,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
+--- !u!114 &1077953947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077953941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4065cd0b8b81c4fb0606f68d6f283b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1145120039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071878139}
   - component: {fileID: 2071878140}
+  - component: {fileID: 2071878141}
   m_Layer: 0
   m_Name: LaunchPoint
   m_TagString: Untagged
@@ -1160,3 +1189,16 @@ Halo:
     serializedVersion: 2
     rgba: 4286611584
   m_Size: 0.5
+--- !u!65 &2071878141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071878138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: -0.25, z: 0}

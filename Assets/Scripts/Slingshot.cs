@@ -25,20 +25,10 @@ public class Slingshot : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Debug.Log("1");
     }
-    void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-        Debug.Log("2");
-    }
+    
     void Awake()
     {
         S = this;
-        Transform launchPointTrans = transform.Find("LaunchPoint");
-        launchPoint = launchPointTrans.gameObject;
-        launchPoint.SetActive(false);
-        launchPos = launchPointTrans.position;
         Debug.Log("3");
     }
 
@@ -66,6 +56,10 @@ public class Slingshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Transform launchPointTrans = transform.Find("LaunchPoint");
+        launchPoint = launchPointTrans.gameObject;
+        launchPoint.SetActive(false);
+        launchPos = launchPointTrans.position;
         //Debug.Log("7");
         if (!aimingMode) return;
         Debug.Log("14");
@@ -96,11 +90,5 @@ public class Slingshot : MonoBehaviour
         Debug.Log("12");
     }
 
-    void FixedUpdate()
-    {
-        Vector2 movment = new Vector2(movementX, movementY);
-        rb.AddForce(movment * speed);
-        //Debug.Log("13");
-    }
 }
 
